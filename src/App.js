@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
 import './App.css';
+import ListOfMovies from './components/ListOfMovies';
+import getFilms from './services/getFilms';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [keyword] = useState('Star wars')
+  const [films, setFilms] = useState([])
+
+  useEffect(() => { 
+      getFilms({ keyword })
+          .then(films => {
+              setFilms(films)
+          })
+  }, [keyword])
+
+  return <div id='container' className='bg-zinc-900 h-screen'>
+    <ListOfMovies films={films} />
+  </div>
 }
 
 export default App;
