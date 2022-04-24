@@ -1,16 +1,6 @@
-import React, {useEffect, useState}  from 'react'
-import getFilms from '../../services/getFilms';
 import Movie from '../Movie'
 
-
-export default function ListOfMovies({ keyword }) {
-  const [films, setFilms] = useState([]);
-
-    useEffect(() => {
-        getFilms({ keyword })
-            .then(films => setFilms(films)) 
-    }, [keyword]) 
-
+export default function ListOfMovies({ films }) {
   return films.map(({Title, imdbID, Poster}) => 
       <Movie
         key = {imdbID}
