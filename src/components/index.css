@@ -1,2 +1,3 @@
-@import "./styles/movie.css";
-@import "./styles/listofmovies.css"
+@import "./Movie";
+@import "./ListOfMovies";
+@import "./Button";
