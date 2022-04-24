@@ -1,39 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css';
-import ListOfMovies from './components/ListOfMovies';
-import getFilms from './services/getFilms';
-import { useFilms } from "./hooks/useFilms";
-
+import { Route } from "wouter"
+import Home from "./pages/Home"
+import SearchFilms from './pages/SearchFilms';
+import Error404 from './pages/404';
 
 export default function App() {
-  const [keyword] = useState(['star wars'])
-  const {films, setFilms} = useFilms({ keyword })
-  const [page, setPages] = useState(2)
-
-  const handleClick = () => {
-    setPages(page+1)
-    getFilms({ keyword , page })
-    .then(film => {
-      const movies = films.concat(film)
-      setFilms(movies)
-    })
-
-    setTimeout(() => {
-      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-    }, 500)
-
-  }
   
+  return <>
+      <Route
+          component={Home}
+          path="/"
+      />  
 
-  return <div id='container' className='bg-zinc-900 h-full text-white flex flex-col items-center'>
-    <div className='container'>
-        <ListOfMovies films={films} />
-    </div>    
-    <div>
-      <button onClick={handleClick} className='bg-amber-500 text-stone-900 
-      font-bold w-56 p-4 mt-5 mb-7 rounded-md hover:bg-amber-400 hover:scale-105 duration-100' >
-        Más Películas
-      </button>
-    </div>
-  </div>
+      <Route
+        component={SearchFilms}
+        path="/searchFilm/:keyword" 
+      />
+
+      <Route
+        component={Error404}
+        path="/404" 
+      />
+      
+      {/* <Route
+        component={Detail}
+        path="/gif/:id"
+      />   */}
+  </>
 }
