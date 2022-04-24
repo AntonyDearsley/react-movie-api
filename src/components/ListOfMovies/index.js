@@ -11,12 +11,11 @@ export default function ListOfMovies({ keyword }) {
             .then(films => setFilms(films)) 
     }, [keyword]) 
 
-  return films.map(({id, title, url}) => 
-      
+  return films.map(({Title, imdbID, Poster}) => 
       <Movie
-        key = {id}
-        title = {title}
-        image = {url}
+        key = {imdbID}
+        title = {Title}
+        image = {Poster}
       /> 
   )
 }

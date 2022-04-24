@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function Movie({id, title, url}) {
-    return <div id={id}>
-        <p>{url}</p>
-        <img src={url} alt={`Movie: ${title}`} />
+export default function Movie (params) {
+    return <div id={params.id}>
+        <img src={params.image} alt={`Movie: ${params.title}`} />
     </div>
 }
 
