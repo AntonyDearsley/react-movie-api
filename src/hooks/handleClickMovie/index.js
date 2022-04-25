@@ -4,17 +4,15 @@ import { useFilms } from "../useFilms"
 
 
 export function useHandleClickMovie( { keyword }) {
-    const {element, setElement} = useFilms({ keyword })
+    const {parameter, setParameter} = useFilms({ keyword })
     const [page, setPages] = useState(2)
+    const type = 'movie'
 
     const handleClick = () => {
         setPages(page+1)
-        getAll({ keyword , page })
+        getAll({ keyword , page, type })
         .then(elements => {
-
-            const filter = elements.filter(element => element.Type === ('movie'))
-            const family = element.concat(filter)
-            setElement(family)
+            setParameter(parameter.concat(elements))
         })
 
         setTimeout(() => {
@@ -22,5 +20,5 @@ export function useHandleClickMovie( { keyword }) {
         }, 500)
     }
     
-    return {handleClick, element}
+    return {handleClick, parameter}
 }
