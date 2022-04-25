@@ -2,9 +2,9 @@ import React from 'react'
 import './App.css';
 import { Route } from "wouter"
 import Home from "./pages/Home"
-import SearchFilms from './pages/SearchFilms';
-import Error404 from './pages/404';
-import SearchSeries from './pages/SearchSeries';
+import SearchAll from './pages/SearchAll'
+import SearchType from './pages/SearchType'
+import Error404 from './pages/404'
 
 export default function App() {
   
@@ -26,24 +26,23 @@ export default function App() {
       />  
 
       <Route
-        component={SearchFilms}
-        path="/searchFilm/:keyword" 
+        component={SearchAll}
+        path="/search/:keyword" 
       />
 
       <Route
-        component={SearchSeries}
-        path="/searchSerie/:keyword" 
-      />
-
-
-      <Route
-        component={Error404}
-        path="/404" 
+        component={SearchType}
+        path="/search/:type/:keyword" 
       />
       
       {/* <Route
         component={Detail}
         path="/gif/:id"
       />   */}
+
+      <Route
+        component={Error404}
+        path="/404" 
+      />
   </>
 }
