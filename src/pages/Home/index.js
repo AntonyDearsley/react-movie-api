@@ -8,7 +8,7 @@ export default function Home() {
     const handleSubmit = e => {
         e.preventDefault()
         keyword === '' ? pushLocation('/404') 
-        : pushLocation(`/searchFilm/${keyword}`)
+        : pushLocation(`/search/${keyword}`)
     }
 
     const handleChange = e => {
