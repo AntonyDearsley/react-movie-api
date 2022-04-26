@@ -9,7 +9,6 @@ export function useAll({ keyword }) {
         getAll({ keyword , page })
             .then(elements => {
               setParameter(elements)
-              
               setTimeout(() => {
                 window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
               }, 500)
