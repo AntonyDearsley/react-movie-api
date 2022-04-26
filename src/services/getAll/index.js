@@ -1,18 +1,22 @@
 const apiKey = "e17f44d2"
-const url = "https://cdn.dribbble.com/users/547471/screenshots/3063720/not_found.gif"
+const url = "https://images-na.ssl-images-amazon.com/images/I/41bLP6NzvKL.jpg"
 
 export default async function getAll ({ keyword, page}) {
     const apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${keyword}&page=${page}`
-
+    
     return fetch(apiURL)
       .then(res => res.json())
       .then(response  => {
-        const films =  response.Search
-        films.map(result => { 
+        let results = undefined
+        if  (response.Response !== "False") {
+            const elements = response.Search
+            results = elements.map(result => { 
             const { Title, imdbID, Poster, Type } = result
-            return Poster === 'N/A' ? { Title, imdbID, Poster: url, Type } 
+            return Poster  === "N/A" ? { Title, imdbID, Poster: url, Type } 
             : { Title, imdbID, Poster, Type }
-        })
-        return films
-    })
+        })} else {
+            return response.Response
+        }
+        return results
+      })
 }
