@@ -1,5 +1,5 @@
 const apiKey = "e17f44d2"
-const url = "https://cdn.dribbble.com/users/547471/screenshots/3063720/not_found.gif"
+const url = "https://images-na.ssl-images-amazon.com/images/I/41bLP6NzvKL.jpg"
 
 export default async function getType ({ keyword, page, type }) {
     const apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${keyword}&type=${type}&page=${page}`
@@ -7,13 +7,13 @@ export default async function getType ({ keyword, page, type }) {
     return fetch(apiURL)
       .then(res => res.json())
       .then(response  => {
-        const films =  response.Search
-        films.map(result => { 
+        const elements =  response.Search
+        const results = elements.map(result => { 
             const { Title, imdbID, Poster, Type } = result
             return Poster === 'N/A' ? { Title, imdbID, Poster: url, Type } 
             : { Title, imdbID, Poster, Type }
         })
-        return films
+        return results
     })
 }
 
