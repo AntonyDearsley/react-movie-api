@@ -28,6 +28,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'home': "url('/src/services/img/bg/bg-home.jpg')",
+      },
+      fontFamily: {
+       'Montserrat' : ['Montserrat', 'sans-serif']
       }
     },
   },
