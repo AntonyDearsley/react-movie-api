@@ -1,0 +1,3 @@
+.menu {
+    @apply border border-white h-screen w-56 ml-5 flex items-center
+}
