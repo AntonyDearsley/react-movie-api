@@ -2,10 +2,10 @@ import React from 'react'
 import Article from '../Article'
 
 const list = {
-    'HOME': '', 
-    'MOVIES': '',
-    'SERIES': '',
-    'GAMES': ''
+    'HOME': '/', 
+    'MOVIES': '/movie',
+    'SERIES': '/serie',
+    'GAMES': '/game'
 }
 
 export default function ListOfArticles() {
