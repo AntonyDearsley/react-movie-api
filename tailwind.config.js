@@ -25,7 +25,11 @@ module.exports = {
       '3xl': '1600px',
       // => @media (min-width: 1600px) { ... }
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'home': "url('/src/services/img/bg/bg-home.jpg')",
+      }
+    },
   },
   plugins: [],
 }
