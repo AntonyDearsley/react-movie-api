@@ -5,12 +5,30 @@ import Home from "./pages/Home"
 import SearchAll from './pages/SearchAll'
 import SearchType from './pages/SearchType'
 import Error404 from './pages/404'
+import Movies from './pages/Movies';
+import Series from './pages/Series';
+import Games from './pages/Games';
 
 export default function App() {
   return <>
       <Route
           component={Home}
           path="/"
+      />  
+
+      <Route
+          component={Movies}
+          path="/movie"
+      />  
+
+      <Route
+          component={Series}
+          path="/serie"
+      />  
+
+      <Route
+          component={Games}
+          path="/game"
       />  
 
       <Route
